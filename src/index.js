@@ -107,8 +107,12 @@ class Game extends React.Component {
     const current = history[this.state.move].squares;  
     const playerToken = this.props.players[this.state.player];
     const winner = calculateWinner(current);
-    const status = winner ? `Winner: ${winner}`
-      : `Next player: ${playerToken}`;
+
+    let status = `Winner: ${winner}`;
+
+    if (!winner) {
+      status = this.state.move < current.length ? `Next player: ${playerToken}` : 'Draw';
+    }
 
     const moves = history.map((step, move) => {
       const desc = move ? `Go to move ${move}` : 'Go to start';
