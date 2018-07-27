@@ -12,36 +12,53 @@ function Square(props) {
   );
 }
 
+class Row extends React.Component {
+  render() {
+    return (
+      <div className="board-row">
+        {this.props.children}
+      </div>     
+    )
+  }
+}
+
 class Board extends React.Component {
 
   renderSquare(i) {
     const props = {
       value: this.props.squares[i],
+      key: i,
       onClick: () => this.props.onClick(i)
     }
     return <Square {...props} />;
   }
 
+  renderRow(row, index) {
+    return (
+      <Row key={index}>
+        { row.map((el, _index) => this.renderSquare(index + _index)) }
+      </Row>
+    );
+  }
+
   render() {
+    let rows = [];
+
+    this.props.squares.forEach((el, index) => {
+      if (!(index % this.props.columns)) {
+        const arr = [...this.props.squares];
+        const chunk = arr.splice(index, this.props.columns);
+        const row = this.renderRow(chunk, index);
+
+        rows.push(row);
+      }
+    })
+
     return (
       <div>
-        <div className="board-row">
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-          {this.renderSquare(5)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
-        </div>
+        {rows}
       </div>
-    );
+    )
   }
 }
 
@@ -53,7 +70,7 @@ class Game extends React.Component {
     this.state = {
       move: 0,
       history: [{
-        squares: Array(9).fill(null)
+        squares: Array(this.props.squares).fill(null)
       }],
       player: this.props.player
     }
@@ -107,6 +124,7 @@ class Game extends React.Component {
         <div className="game-board">
           <Board 
             squares={current} 
+            columns={this.props.columns}
             onClick={(i) => { this.handleClick(i) } } 
           />
         </div>
@@ -122,7 +140,7 @@ class Game extends React.Component {
 // ========================================
 
 ReactDOM.render(
-  <Game player={0} players={['X', '0']} />,
+  <Game player={0} players={['X', '0']} squares={9} columns={3} />,
   document.getElementById('root')
 );
 
