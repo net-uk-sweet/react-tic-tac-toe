@@ -99,7 +99,8 @@ class Game extends React.Component {
   }
 
   jumpTo(move) {
-    this.setState({ move });
+    const player = move % 2 ? 1 : 0;
+    this.setState({ move, player });
   }
 
   render() {
