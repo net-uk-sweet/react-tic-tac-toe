@@ -24,19 +24,19 @@ class Row extends React.Component {
 
 class Board extends React.Component {
 
-  renderSquare(i) {
+  renderSquare(i, row, column) {
     const props = {
-      value: this.props.squares[i],
-      key: i,
-      onClick: () => this.props.onClick(i)
+      value: this.props.squares[i].token,
+      key: i + 1,
+      onClick: () => this.props.onClick(i, row, column)
     }
     return <Square {...props} />;
   }
 
-  renderRow(row, index) {
+  renderRow(rowData, rowCount, index) {
     return (
-      <Row key={index}>
-        { row.map((el, _index) => this.renderSquare(index + _index)) }
+      <Row key={rowCount}>
+        { rowData.map((el, _index) => this.renderSquare(index + _index, rowCount, _index + 1)) }
       </Row>
     );
   }
@@ -47,8 +47,9 @@ class Board extends React.Component {
     this.props.squares.forEach((el, index) => {
       if (!(index % this.props.columns)) {
         const arr = [...this.props.squares];
-        const chunk = arr.splice(index, this.props.columns);
-        const row = this.renderRow(chunk, index);
+        const rowData = arr.splice(index, this.props.columns);
+        const rowCount = rows.length + 1;
+        const row = this.renderRow(rowData, rowCount, index);
 
         rows.push(row);
       }
@@ -70,29 +71,40 @@ class Game extends React.Component {
     this.state = {
       move: 0,
       history: [{
-        squares: Array(this.props.squares).fill(null)
+        squares: Array(this.props.squares).fill().map(obj => {
+          return {
+            token: null,
+            column: null,
+            row: null
+          }
+        })
       }],
       player: this.props.player
     }
   }
 
-  handleClick(index) {
+  handleClick(index, row, column) {
     const history = this.state.history.slice(0, this.state.move + 1);
     const current = history[history.length - 1];  
     const player = this.state.player ? 0 : 1;
     
     let squares = [...current.squares];
 
-    if (calculateWinner(squares) || squares[index]) {
+    if (calculateWinner(squares) || squares[index].token) {
       return;
     }
 
-    squares[index] = this.props.players[this.state.player];
+    squares[index] = {
+      token: this.props.players[this.state.player],
+      row,
+      column
+    };
     
     this.setState({ 
       player, 
       move: history.length,
       history: history.concat([{ 
+        index: index,
         squares: squares 
       }])
     });
@@ -115,10 +127,11 @@ class Game extends React.Component {
       status = this.state.move < current.length ? `Next player: ${playerToken}` : 'Draw';
     }
 
-    const moves = history.map((step, move) => {
-      const desc = move ? `Go to move ${move}` : 'Go to start';
+    const moves = history.map((step, index) => {
+      const move = step.squares[step.index];
+      const desc = index ? `Go to move ${index} - column - ${move.column} - row - ${move.row}` : 'Go to start';
       return (
-        <li key={move} onClick={() => this.jumpTo(move)} className={move === this.state.move ? 'selected' : ''}>
+        <li key={index} onClick={() => this.jumpTo(index)} className={index === this.state.move ? 'selected' : ''}>
           <button>{desc}</button>
         </li>
       );
@@ -130,7 +143,7 @@ class Game extends React.Component {
           <Board 
             squares={current} 
             columns={this.props.columns}
-            onClick={(i) => { this.handleClick(i) } } 
+            onClick={(i, row, column) => { this.handleClick(i, row, column) } } 
           />
         </div>
         <div className="game-info">
@@ -162,8 +175,8 @@ function calculateWinner(squares) {
   ];
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+    if (squares[a].token && squares[a].token === squares[b].token && squares[a].token === squares[c].token) {
+      return squares[a].token;
     }
   }
   return null;
