@@ -70,6 +70,7 @@ class Game extends React.Component {
 
     this.state = {
       move: 0,
+      ascendingOrder: true,
       history: [{
         squares: Array(this.props.squares).fill().map(obj => {
           return {
@@ -83,7 +84,13 @@ class Game extends React.Component {
     }
   }
 
-  handleClick(index, row, column) {
+  handleToggleOrderClick() {
+    this.setState({
+      ascendingOrder: !this.state.ascendingOrder
+    })
+  }
+
+  handleSquareClick(index, row, column) {
     const history = this.state.history.slice(0, this.state.move + 1);
     const current = history[history.length - 1];  
     const player = this.state.player ? 0 : 1;
@@ -127,12 +134,18 @@ class Game extends React.Component {
       status = this.state.move < current.length ? `Next player: ${playerToken}` : 'Draw';
     }
 
-    const moves = history.map((step, index) => {
+    const moves = (this.state.ascendingOrder ? history : [...history].reverse()).map((step, index, arr) => {
+      const totalMoves = arr.length - 1;
       const move = step.squares[step.index];
-      const desc = index ? `Go to move ${index} - column - ${move.column} - row - ${move.row}` : 'Go to start';
+      const isStartMove = this.state.ascendingOrder ? index === 0 : index === totalMoves;
+      const mutatedIndex = this.state.ascendingOrder ? index : totalMoves - index;
+      const desc = isStartMove ? 'Go to start' : `Go to move ${index} - column - ${move.column} - row - ${move.row}`;
+    
       return (
-        <li key={index} onClick={() => this.jumpTo(index)} className={index === this.state.move ? 'selected' : ''}>
-          <button>{desc}</button>
+        <li key={index} 
+          onClick={() => this.jumpTo(mutatedIndex)} 
+          className={mutatedIndex === this.state.move ? 'selected' : ''}>
+            <button>{desc}</button>
         </li>
       );
     });
@@ -143,12 +156,13 @@ class Game extends React.Component {
           <Board 
             squares={current} 
             columns={this.props.columns}
-            onClick={(i, row, column) => { this.handleClick(i, row, column) } } 
+            onClick={(i, row, column) => { this.handleSquareClick(i, row, column) } } 
           />
         </div>
         <div className="game-info">
           <div>{status}</div>
           <ol>{moves}</ol>
+          <button className="button" onClick={() => this.handleToggleOrderClick()}>Toggle order</button>
         </div>
       </div>
     );
