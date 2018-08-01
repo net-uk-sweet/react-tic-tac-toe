@@ -8,6 +8,7 @@
 [x] - Fix next move bug
 [ ] - Modularise
 [ ] - Add unit tests 
+[x] - Reset button
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 

@@ -65,30 +65,40 @@ class Board extends React.Component {
   }
 }
 
+const defaultState = (squares, player) => ({
+  hasWinner: false,
+  move: 0,
+  ascendingOrder: true,
+  history: [{
+    squares: Array(squares).fill().map(() => ({
+      token: null,
+      column: null,
+      row: null
+    }))
+  }],
+  player: player
+});
+
 class Game extends React.Component {
 
   constructor(props) {
     super(props);
 
-    this.state = {
-      hasWinner: false,
-      move: 0,
-      ascendingOrder: true,
-      history: [{
-        squares: Array(this.props.squares).fill().map(() => ({
-          token: null,
-          column: null,
-          row: null
-        }))
-      }],
-      player: this.props.player
-    }
+    this.state = this.setInitialState();
+  }
+
+  setInitialState() {
+    return {...defaultState(this.props.squares, this.props.player)};
   }
 
   handleToggleOrderClick() {
     this.setState({
       ascendingOrder: !this.state.ascendingOrder
     })
+  }
+
+  handleResetClick() {
+    this.setState(this.setInitialState());
   }
 
   handleSquareClick(index, row, column) {
@@ -162,6 +172,7 @@ class Game extends React.Component {
           <div>{status}</div>
           <ol>{moves}</ol>
           <button className="button" onClick={() => this.handleToggleOrderClick()}>Toggle order</button>
+          <button className="button" onClick={() => this.handleResetClick()}>Reset</button>
         </div>
       </div>
     );
