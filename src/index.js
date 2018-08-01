@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 function Square(props) {
+  const classes = props.highlight ? 'square highlight' : 'square';
   return (
     <button 
-      className="square" 
+      className={classes}
       onClick={props.onClick}>
         {props.value}
     </button>
@@ -26,6 +27,7 @@ class Board extends React.Component {
 
   renderSquare(i, row, column) {
     const props = {
+      highlight: this.props.winner && this.props.winner.includes(i),
       value: this.props.squares[i].token,
       key: i + 1,
       onClick: () => this.props.onClick(i, row, column)
@@ -69,16 +71,15 @@ class Game extends React.Component {
     super(props);
 
     this.state = {
+      hasWinner: false,
       move: 0,
       ascendingOrder: true,
       history: [{
-        squares: Array(this.props.squares).fill().map(obj => {
-          return {
-            token: null,
-            column: null,
-            row: null
-          }
-        })
+        squares: Array(this.props.squares).fill().map(() => ({
+          token: null,
+          column: null,
+          row: null
+        }))
       }],
       player: this.props.player
     }
@@ -128,11 +129,8 @@ class Game extends React.Component {
     const playerToken = this.props.players[this.state.player];
     const winner = calculateWinner(current);
 
-    let status = `Winner: ${winner}`;
-
-    if (!winner) {
-      status = this.state.move < current.length ? `Next player: ${playerToken}` : 'Draw';
-    }
+    let status = winner ? `Winner: ${winner.token}` : 
+      this.state.move < current.length ? `Next player: ${playerToken}` : 'Draw';
 
     const moves = (this.state.ascendingOrder ? history : [...history].reverse()).map((step, index, arr) => {
       const totalMoves = arr.length - 1;
@@ -154,6 +152,7 @@ class Game extends React.Component {
       <div className="game">
         <div className="game-board">
           <Board 
+            winner={winner && winner.sequence}
             squares={current} 
             columns={this.props.columns}
             onClick={(i, row, column) => { this.handleSquareClick(i, row, column) } } 
@@ -190,7 +189,10 @@ function calculateWinner(squares) {
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a].token && squares[a].token === squares[b].token && squares[a].token === squares[c].token) {
-      return squares[a].token;
+      return { 
+        token: squares[a].token,
+        sequence: lines[i]
+      }
     }
   }
   return null;
