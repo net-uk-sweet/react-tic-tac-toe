@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Immutable from 'immutable';
+
 import './index.css';
 
 function Square(props) {
@@ -28,34 +30,42 @@ class Board extends React.Component {
   renderSquare(i, row, column) {
     const props = {
       highlight: this.props.winner && this.props.winner.includes(i),
-      value: this.props.squares[i].token,
+      value: this.props.squares.getIn([i, 'token']),
       key: i + 1,
       onClick: () => this.props.onClick(i, row, column)
     }
     return <Square {...props} />;
   }
 
-  renderRow(rowData, rowCount, index) {
+  renderRow(rowData, rowCount) {
     return (
       <Row key={rowCount}>
-        { rowData.map((el, _index) => this.renderSquare(index + _index, rowCount, _index + 1)) }
+        { rowData.map((el, index) => this.renderSquare((rowCount * this.props.columns) + index, rowCount, index + 1)) }
       </Row>
     );
   }
 
   render() {
+
+    // console.log(jsx.toJS());
+
+    /*
     let rows = [];
 
-    this.props.squares.forEach((el, index) => {
+    this.props.squares.forEach((el, index, squares) => {
       if (!(index % this.props.columns)) {
-        const arr = [...this.props.squares];
-        const rowData = arr.splice(index, this.props.columns);
+        const rowData = squares.splice(index, this.props.columns);
         const rowCount = rows.length + 1;
         const row = this.renderRow(rowData, rowCount, index);
 
         rows.push(row);
       }
     })
+    */
+
+    const rows = splitIntoChunks(this.props.squares, this.props.columns).map((row, index) => {
+      return this.renderRow(row, index);
+    });
 
     return (
       <div>
@@ -65,7 +75,7 @@ class Board extends React.Component {
   }
 }
 
-const defaultState = (squares, player) => ({
+const defaultState = (squares, player) => Immutable.fromJS({
   hasWinner: false,
   move: 0,
   ascendingOrder: true,
@@ -84,11 +94,11 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = this.setInitialState();
+    this.state = this.getInitialState();
   }
 
-  setInitialState() {
-    return {...defaultState(this.props.squares, this.props.player)};
+  getInitialState() {
+    return defaultState(this.props.squares, this.props.player);
   }
 
   handleToggleOrderClick() {
@@ -98,7 +108,7 @@ class Game extends React.Component {
   }
 
   handleResetClick() {
-    this.setState(this.setInitialState());
+    this.setState(this.getInitialState());
   }
 
   handleSquareClick(index, row, column) {
@@ -134,25 +144,26 @@ class Game extends React.Component {
   }
 
   render() {
-    const history = this.state.history;
-    const current = history[this.state.move].squares;  
-    const playerToken = this.props.players[this.state.player];
+
+    const history = this.state.get('history');
+    const current = history.getIn([this.state.get('move'), 'squares']);
+    const playerToken = this.props.players[this.state.get('player')];
     const winner = calculateWinner(current);
 
-    let status = winner ? `Winner: ${winner.token}` : 
-      this.state.move < current.length ? `Next player: ${playerToken}` : 'Draw';
+    let status = winner ? `Winner: ${winner.get('token')}` : 
+      this.state.get('move') < current.size ? `Next player: ${playerToken}` : 'Draw';
 
-    const moves = (this.state.ascendingOrder ? history : [...history].reverse()).map((step, index, arr) => {
-      const totalMoves = arr.length - 1;
-      const move = step.squares[step.index];
-      const isStartMove = this.state.ascendingOrder ? index === 0 : index === totalMoves;
-      const mutatedIndex = this.state.ascendingOrder ? index : totalMoves - index;
-      const desc = isStartMove ? 'Go to start' : `Go to move ${index} - column - ${move.column} - row - ${move.row}`;
+    const moves = (this.state.get('ascendingOrder') ? history : history.reverse()).map((step, index, list) => {
+      const totalMoves = list.size - 1;
+      const move = step.get('squares').get(0);
+      const isStartMove = this.state.get('ascendingOrder') ? index === 0 : index === totalMoves;
+      const mutatedIndex = this.state.get('ascendingOrder') ? index : totalMoves - index;
+      const desc = isStartMove ? 'Go to start' : `Go to move ${index} - column - ${move.get('column')} - row - ${move.get('row')}`;
     
       return (
         <li key={index} 
           onClick={() => this.jumpTo(mutatedIndex)} 
-          className={mutatedIndex === this.state.move ? 'selected' : ''}>
+          className={mutatedIndex === this.state.get('move') ? 'selected' : ''}>
             <button>{desc}</button>
         </li>
       );
@@ -162,7 +173,7 @@ class Game extends React.Component {
       <div className="game">
         <div className="game-board">
           <Board 
-            winner={winner && winner.sequence}
+            winner={winner && winner.get('sequence')}
             squares={current} 
             columns={this.props.columns}
             onClick={(i, row, column) => { this.handleSquareClick(i, row, column) } } 
@@ -186,6 +197,11 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
+function splitIntoChunks(list, chunkSize = 1) {
+  return Immutable.Range(0, list.count(), chunkSize)
+    .map(chunkStart => list.slice(chunkStart, chunkStart + chunkSize));
+}
+
 function calculateWinner(squares) {
   const lines = [
     [0, 1, 2],
@@ -199,11 +215,11 @@ function calculateWinner(squares) {
   ];
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
-    if (squares[a].token && squares[a].token === squares[b].token && squares[a].token === squares[c].token) {
-      return { 
-        token: squares[a].token,
+    if (squares.get(a).get('token') && squares.get(a).get('token') === squares.get(b).get('token') && squares.get(a).get('token') === squares.get(c).get('token')) {
+      return Immutable.fromJS({ 
+        token: squares.get(a).get('token'),
         sequence: lines[i]
-      }
+      });
     }
   }
   return null;
