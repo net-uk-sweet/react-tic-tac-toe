@@ -75,17 +75,17 @@ class Board extends React.Component {
   }
 }
 
-const defaultState = (squares, player) => Immutable.fromJS({
+const defaultState = (squares, player) => ({
   hasWinner: false,
   move: 0,
   ascendingOrder: true,
-  history: [{
+  history: Immutable.fromJS([{
     squares: Array(squares).fill().map(() => ({
       token: null,
       column: null,
       row: null
     }))
-  }],
+  }]),
   player: player
 });
 
@@ -112,29 +112,28 @@ class Game extends React.Component {
   }
 
   handleSquareClick(index, row, column) {
-    const history = this.state.history.slice(0, this.state.move + 1);
-    const current = history[history.length - 1];  
+    let history = this.state.history.splice(0, this.state.move);
+    const current = history.get(history.size - 1);  
     const player = this.state.player ? 0 : 1;
     
-    let squares = [...current.squares];
+    let squares = current.get('squares');
 
-    if (calculateWinner(squares) || squares[index].token) {
+    if (calculateWinner(squares) || squares.getIn([index, 'token'])) {
       return;
     }
 
-    squares[index] = {
+    squares = squares.set(index, Immutable.fromJS({
       token: this.props.players[this.state.player],
       row,
       column
-    };
+    }));
     
-    this.setState({ 
-      player, 
-      move: history.length,
-      history: history.concat([{ 
-        index: index,
-        squares: squares 
-      }])
+    history = this.state.history.concat(Immutable.fromJS([{ index, squares }]));
+
+    this.setState({
+      player,
+      move: history.size - 1,
+      history
     });
   }
 
@@ -145,25 +144,25 @@ class Game extends React.Component {
 
   render() {
 
-    const history = this.state.get('history');
-    const current = history.getIn([this.state.get('move'), 'squares']);
-    const playerToken = this.props.players[this.state.get('player')];
+    const history = this.state.history;
+    const current = history.getIn([this.state.move, 'squares']);
+    const playerToken = this.props.players[this.state.player];
     const winner = calculateWinner(current);
 
     let status = winner ? `Winner: ${winner.get('token')}` : 
-      this.state.get('move') < current.size ? `Next player: ${playerToken}` : 'Draw';
+      this.state.move < current.size ? `Next player: ${playerToken}` : 'Draw';
 
-    const moves = (this.state.get('ascendingOrder') ? history : history.reverse()).map((step, index, list) => {
+    const moves = (this.state.ascendingOrder ? history : history.reverse()).map((step, index, list) => {
       const totalMoves = list.size - 1;
       const move = step.get('squares').get(0);
-      const isStartMove = this.state.get('ascendingOrder') ? index === 0 : index === totalMoves;
-      const mutatedIndex = this.state.get('ascendingOrder') ? index : totalMoves - index;
+      const isStartMove = this.state.ascendingOrder ? index === 0 : index === totalMoves;
+      const mutatedIndex = this.state.ascendingOrder ? index : totalMoves - index;
       const desc = isStartMove ? 'Go to start' : `Go to move ${index} - column - ${move.get('column')} - row - ${move.get('row')}`;
     
       return (
         <li key={index} 
           onClick={() => this.jumpTo(mutatedIndex)} 
-          className={mutatedIndex === this.state.get('move') ? 'selected' : ''}>
+          className={mutatedIndex === this.state.move ? 'selected' : ''}>
             <button>{desc}</button>
         </li>
       );
