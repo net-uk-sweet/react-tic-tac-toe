@@ -1,0 +1,30 @@
+import Immutable from 'immutable';
+
+export function splitIntoChunks(list, chunkSize = 1) {
+    return Immutable.Range(0, list.count(), chunkSize)
+        .map(chunkStart => list.slice(chunkStart, chunkStart + chunkSize));
+}
+  
+export function calculateWinner(squares) {
+    const lines = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6],
+    ];
+
+    for (let i = 0; i < lines.length; i++) {
+        const [a, b, c] = lines[i];
+        if (squares.get(a).get('token') && squares.get(a).get('token') === squares.get(b).get('token') && squares.get(a).get('token') === squares.get(c).get('token')) {
+            return Immutable.fromJS({ 
+                token: squares.get(a).get('token'),
+                sequence: lines[i]
+            });
+        }
+    }
+    return null;
+}
