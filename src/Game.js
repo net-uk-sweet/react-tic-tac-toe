@@ -41,7 +41,7 @@ const defaultState = (squares, player) => ({
     }
   
     handleSquareClick(index, row, column) {
-      let history = this.state.history.splice(0, this.state.move);
+      let history = this.state.history.slice(0, this.state.move + 1);
       const current = history.get(history.size - 1);  
       const player = this.state.player ? 0 : 1;
       
@@ -57,7 +57,7 @@ const defaultState = (squares, player) => ({
         column
       }));
       
-      history = this.state.history.concat(Immutable.fromJS([{ index, squares }]));
+      history = history.concat(Immutable.fromJS([{ index, squares }]));
   
       this.setState({
         player,
