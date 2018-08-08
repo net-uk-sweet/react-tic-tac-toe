@@ -3,24 +3,26 @@ import React from 'react';
 import { splitIntoChunks } from './helpers';
 import Row from './Row';
 import Square from './Square';
-
 export default class Board extends React.Component {
 
-    renderSquare(i, row, column) {
+    renderSquare(index, row, column) {
       const props = {
-        highlight: this.props.winner && this.props.winner.includes(i),
-        value: this.props.squares.getIn([i, 'token']),
-        key: i + 1,
-        onClick: () => this.props.onClick(i, row, column)
+        highlight: this.props.winner && this.props.winner.includes(index),
+        value: this.props.squares.getIn([index, 'token']),
+        key: column,
+        onClick: () => this.props.onClick(index, row, column)
       }
       return <Square {...props} />;
     }
   
     renderRow(rowData, rowCount) {
+      const squares = rowData.map((el, index) => {
+        const squareCount = (rowCount * this.props.columns) + index;
+        return this.renderSquare(squareCount, rowCount, index + 1);
+      });
+
       return (
-        <Row key={rowCount}>
-          { rowData.map((el, index) => this.renderSquare((rowCount * this.props.columns) + index, rowCount, index + 1)) }
-        </Row>
+        <Row key={rowCount}>{squares}</Row>
       );
     }
   
@@ -30,9 +32,7 @@ export default class Board extends React.Component {
       });
   
       return (
-        <div>
-          {rows}
-        </div>
-      )
+        <div>{rows}</div>
+      );
     }
   }

@@ -19,9 +19,13 @@ export function calculateWinner(squares) {
 
     for (let i = 0; i < lines.length; i++) {
         const [a, b, c] = lines[i];
-        if (squares.get(a).get('token') && squares.get(a).get('token') === squares.get(b).get('token') && squares.get(a).get('token') === squares.get(c).get('token')) {
+        const toka = squares.getIn([a, 'token']);
+        const tokb = squares.getIn([b, 'token']);
+        const tokc = squares.getIn([c, 'token']);
+
+        if (toka && toka === tokb && toka === tokc) {
             return Immutable.fromJS({ 
-                token: squares.get(a).get('token'),
+                token: a,
                 sequence: lines[i]
             });
         }

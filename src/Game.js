@@ -71,6 +71,25 @@ const defaultState = (squares, player) => ({
       this.setState({ move, player });
     }
   
+    renderMove(step, index, list, ascendingOrder) {
+
+      const totalMoves = list.size - 1;
+      const move = step.get('squares').get(step.get('index'));
+      const isStartMove = ascendingOrder ? index === 0 : index === totalMoves;
+      const mutatedIndex = ascendingOrder ? index : totalMoves - index;
+
+      const details = isStartMove ? 'Go to start' : 
+        `Go to move ${index} - column - ${move.get('column')} - row - ${move.get('row')}`;
+    
+      return (
+        <li key={index} 
+          onClick={() => this.jumpTo(mutatedIndex)} 
+          className={mutatedIndex === this.state.move ? 'selected' : ''}>
+            <button>{details}</button>
+        </li>
+      );
+    }
+
     render() {
   
       const history = this.state.history;
@@ -78,23 +97,14 @@ const defaultState = (squares, player) => ({
       const playerToken = this.props.players[this.state.player];
       const winner = calculateWinner(current);
   
-      let status = winner ? `Winner: ${winner.get('token')}` : 
-        this.state.move < current.size ? `Next player: ${playerToken}` : 'Draw';
-  
-      const moves = (this.state.ascendingOrder ? history : history.reverse()).map((step, index, list) => {
-        const totalMoves = list.size - 1;
-        const move = step.get('squares').get(0);
-        const isStartMove = this.state.ascendingOrder ? index === 0 : index === totalMoves;
-        const mutatedIndex = this.state.ascendingOrder ? index : totalMoves - index;
-        const desc = isStartMove ? 'Go to start' : `Go to move ${index} - column - ${move.get('column')} - row - ${move.get('row')}`;
+      let status = this.state.move < current.size ? `Next player: ${playerToken}` : 'Draw';
       
-        return (
-          <li key={index} 
-            onClick={() => this.jumpTo(mutatedIndex)} 
-            className={mutatedIndex === this.state.move ? 'selected' : ''}>
-              <button>{desc}</button>
-          </li>
-        );
+      if (winner) {
+        status = `Winner: ${winner.get('token')}`;
+      }
+    
+      const moves = (this.state.ascendingOrder ? history : history.reverse()).map((step, move, list) => {
+        return this.renderMove(step, move, list, this.state.ascendingOrder);
       });
   
       return (
