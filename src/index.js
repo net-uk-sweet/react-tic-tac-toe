@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 
 import './index.css';
 
+import { GAME as props } from './config';
 import Game from './Game';
 
 ReactDOM.render(
-  <Game player={0} players={['X', '0']} squares={9} columns={3} />,
+  <Game {...props} />,
   document.getElementById('root')
 );
 

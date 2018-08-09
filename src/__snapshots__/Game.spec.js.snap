@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="game"
+>
+  <div
+    className="game-board"
+  >
+    <Board
+      columns={3}
+      onClick={[Function]}
+      squares={
+        Immutable.List [
+          Immutable.Map {
+            token: null,
+            column: null,
+            row: null,
+          },
+          Immutable.Map {
+            token: null,
+            column: null,
+            row: null,
+          },
+          Immutable.Map {
+            token: null,
+            column: null,
+            row: null,
+          },
+          Immutable.Map {
+            token: null,
+            column: null,
+            row: null,
+          },
+          Immutable.Map {
+            token: null,
+            column: null,
+            row: null,
+          },
+          Immutable.Map {
+            token: null,
+            column: null,
+            row: null,
+          },
+          Immutable.Map {
+            token: null,
+            column: null,
+            row: null,
+          },
+          Immutable.Map {
+            token: null,
+            column: null,
+            row: null,
+          },
+          Immutable.Map {
+            token: null,
+            column: null,
+            row: null,
+          },
+        ]
+      }
+      winner={null}
+    />
+  </div>
+  <div
+    className="game-info"
+  >
+    <div>
+      Next player: x
+    </div>
+    <ol>
+      Immutable.List [
+        <li
+          className="selected"
+          onClick={[Function]}
+        >
+          <button>
+            Go to start
+          </button>
+        </li>,
+      ]
+    </ol>
+    <button
+      className="button"
+      onClick={[Function]}
+    >
+      Toggle order
+    </button>
+    <button
+      className="button"
+      onClick={[Function]}
+    >
+      Reset
+    </button>
+  </div>
+</div>
+`;

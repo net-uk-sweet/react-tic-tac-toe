@@ -25,7 +25,7 @@ export function calculateWinner(squares) {
 
         if (toka && toka === tokb && toka === tokc) {
             return Immutable.fromJS({ 
-                token: a,
+                token: toka,
                 sequence: lines[i]
             });
         }

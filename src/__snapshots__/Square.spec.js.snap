@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`highlights when part of a winning sequence 1`] = `
+<button
+  className="square highlight"
+  onClick={[Function]}
+>
+  x
+</button>
+`;
+
+exports[`matches snapshot 1`] = `
+<button
+  className="square"
+  onClick={[Function]}
+>
+  x
+</button>
+`;
