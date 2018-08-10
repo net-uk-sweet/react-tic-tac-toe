@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div>
+  Array [
+    <Row>
+      Immutable.List [
+          <Square
+              highlight={true}
+              onClick={[Function]}
+              value={undefined}
+          />,
+          <Square
+              highlight={true}
+              onClick={[Function]}
+              value={undefined}
+          />,
+          <Square
+              highlight={true}
+              onClick={[Function]}
+              value={undefined}
+          />,
+      ]
+  </Row>,
+    <Row>
+      Immutable.List [
+          <Square
+              highlight={false}
+              onClick={[Function]}
+              value={undefined}
+          />,
+          <Square
+              highlight={false}
+              onClick={[Function]}
+              value={undefined}
+          />,
+          <Square
+              highlight={false}
+              onClick={[Function]}
+              value={undefined}
+          />,
+      ]
+  </Row>,
+    <Row>
+      Immutable.List [
+          <Square
+              highlight={false}
+              onClick={[Function]}
+              value={undefined}
+          />,
+          <Square
+              highlight={false}
+              onClick={[Function]}
+              value={undefined}
+          />,
+          <Square
+              highlight={false}
+              onClick={[Function]}
+              value={undefined}
+          />,
+      ]
+  </Row>,
+  ]
+</div>
+`;

@@ -18,7 +18,7 @@ export default class Board extends React.Component {
     renderRow(rowData, rowCount) {
       const squares = rowData.map((el, index) => {
         const squareCount = (rowCount * this.props.columns) + index;
-        return this.renderSquare(squareCount, rowCount, index + 1);
+        return this.renderSquare(squareCount, rowCount + 1, index + 1);
       });
 
       return (
