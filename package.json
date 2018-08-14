@@ -17,6 +17,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "immutable": "^3.8.2"
+    "immutable": "^3.8.2",
+    "immutable-devtools": "^0.1.3"
   }
 }

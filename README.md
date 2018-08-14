@@ -5,6 +5,7 @@
 [x] - When someone wins, highlight the three squares that caused the win.
 [x] - When no one wins, display a message about the result being a draw.
 [x] - Use Immutable
+[x] - Add Immutable console extension
 [x] - Fix next move bug
 [x] - Modularise
 [ ] - Add unit tests 
