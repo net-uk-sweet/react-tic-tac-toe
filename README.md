@@ -8,11 +8,14 @@
 [x] - Add Immutable console extension
 [x] - Fix next move bug
 [x] - Modularise
-[ ] - Add unit tests 
 [x] - Reset button
 [x] - Refactor
 [ ] - class transformer
 [ ] - PropTypes
+[ ] - Add unit tests 
+[ ] - Add type script
+[ ] - Immer 
+[ ] - Prettier
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 

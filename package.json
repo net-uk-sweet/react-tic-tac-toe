@@ -2,6 +2,13 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
+  "jest": {
+    "collectCoverageFrom" : [
+      "src/**/*.js",
+      "!src/index.js",
+      "!<rootDir>/node_modules/"
+    ]
+  },
   "dependencies": {
     "enzyme": "^3.4.1",
     "enzyme-adapter-react-16": "^1.2.0",

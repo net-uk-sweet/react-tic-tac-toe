@@ -1,0 +1,147 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<Unknown>
+  <div />
+  <ol>
+    Immutable.List [
+      <li
+        className=""
+      >
+        <button
+          onClick={[Function]}
+        >
+          Go to start
+        </button>
+      </li>,
+      <li
+        className=""
+      >
+        <button
+          onClick={[Function]}
+        >
+          Go to move 1 - column - 1 - row - 1
+        </button>
+      </li>,
+      <li
+        className="selected qa-selected"
+      >
+        <button
+          onClick={[Function]}
+        >
+          Go to move 2 - column - 2 - row - 2
+        </button>
+      </li>,
+      <li
+        className=""
+      >
+        <button
+          onClick={[Function]}
+        >
+          Go to move 3 - column - 3 - row - 1
+        </button>
+      </li>,
+      <li
+        className=""
+      >
+        <button
+          onClick={[Function]}
+        >
+          Go to move 4 - column - 3 - row - 2
+        </button>
+      </li>,
+      <li
+        className=""
+      >
+        <button
+          onClick={[Function]}
+        >
+          Go to move 5 - column - 3 - row - 3
+        </button>
+      </li>,
+      <li
+        className=""
+      >
+        <button
+          onClick={[Function]}
+        >
+          Go to move 6 - column - 2 - row - 3
+        </button>
+      </li>,
+    ]
+  </ol>
+</Unknown>
+`;
+
+exports[`when the move order is reversed matches snapshot 1`] = `
+<Unknown>
+  <div />
+  <ol>
+    Immutable.List [
+      <li
+        className=""
+      >
+        <button
+          onClick={[Function]}
+        >
+          Go to move 6 - column - 2 - row - 3
+        </button>
+      </li>,
+      <li
+        className=""
+      >
+        <button
+          onClick={[Function]}
+        >
+          Go to move 5 - column - 3 - row - 3
+        </button>
+      </li>,
+      <li
+        className=""
+      >
+        <button
+          onClick={[Function]}
+        >
+          Go to move 4 - column - 3 - row - 2
+        </button>
+      </li>,
+      <li
+        className=""
+      >
+        <button
+          onClick={[Function]}
+        >
+          Go to move 3 - column - 3 - row - 1
+        </button>
+      </li>,
+      <li
+        className="selected qa-selected"
+      >
+        <button
+          onClick={[Function]}
+        >
+          Go to move 2 - column - 2 - row - 2
+        </button>
+      </li>,
+      <li
+        className=""
+      >
+        <button
+          onClick={[Function]}
+        >
+          Go to move 1 - column - 1 - row - 1
+        </button>
+      </li>,
+      <li
+        className=""
+      >
+        <button
+          onClick={[Function]}
+        >
+          Go to start
+        </button>
+      </li>,
+    ]
+  </ol>
+</Unknown>
+`;
