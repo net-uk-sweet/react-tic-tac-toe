@@ -125,13 +125,293 @@ exports[`matches snapshot 1`] = `
       status="Next player: x"
     />
     <button
-      className="button"
+      className="button qa-toggle-button"
       onClick={[Function]}
     >
       Toggle order
     </button>
     <button
-      className="button"
+      className="button qa-reset-button"
+      onClick={[Function]}
+    >
+      Reset
+    </button>
+  </div>
+</div>
+`;
+
+exports[`should correctly calculate a draw 1`] = `
+<div
+  className="game"
+>
+  <div
+    className="game-board"
+  >
+    <Board
+      columns={3}
+      onClick={[Function]}
+      squares={
+        Immutable.List [
+          Immutable.Map {
+            token: null,
+            column: null,
+            row: null,
+          },
+          Immutable.Map {
+            token: null,
+            column: null,
+            row: null,
+          },
+          Immutable.Map {
+            token: null,
+            column: null,
+            row: null,
+          },
+          Immutable.Map {
+            token: null,
+            column: null,
+            row: null,
+          },
+          Immutable.Map {
+            token: null,
+            column: null,
+            row: null,
+          },
+          Immutable.Map {
+            token: null,
+            column: null,
+            row: null,
+          },
+          Immutable.Map {
+            token: null,
+            column: null,
+            row: null,
+          },
+          Immutable.Map {
+            token: null,
+            column: null,
+            row: null,
+          },
+          Immutable.Map {
+            token: null,
+            column: null,
+            row: null,
+          },
+        ]
+      }
+      winner={null}
+    />
+  </div>
+  <div
+    className="game-panel"
+  >
+    <GameInfo
+      ascendingOrder={true}
+      currentMove={0}
+      history={
+        Immutable.List [
+          Immutable.Map {
+            squares: Immutable.List [
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+            ],
+          },
+        ]
+      }
+      onMoveClick={[Function]}
+      status="Next player: x"
+    />
+    <button
+      className="button qa-toggle-button"
+      onClick={[Function]}
+    >
+      Toggle order
+    </button>
+    <button
+      className="button qa-reset-button"
+      onClick={[Function]}
+    >
+      Reset
+    </button>
+  </div>
+</div>
+`;
+
+exports[`should correctly calculate a win 1`] = `
+<div
+  className="game"
+>
+  <div
+    className="game-board"
+  >
+    <Board
+      columns={3}
+      onClick={[Function]}
+      squares={
+        Immutable.List [
+          Immutable.Map {
+            token: null,
+            column: null,
+            row: null,
+          },
+          Immutable.Map {
+            token: null,
+            column: null,
+            row: null,
+          },
+          Immutable.Map {
+            token: null,
+            column: null,
+            row: null,
+          },
+          Immutable.Map {
+            token: null,
+            column: null,
+            row: null,
+          },
+          Immutable.Map {
+            token: null,
+            column: null,
+            row: null,
+          },
+          Immutable.Map {
+            token: null,
+            column: null,
+            row: null,
+          },
+          Immutable.Map {
+            token: null,
+            column: null,
+            row: null,
+          },
+          Immutable.Map {
+            token: null,
+            column: null,
+            row: null,
+          },
+          Immutable.Map {
+            token: null,
+            column: null,
+            row: null,
+          },
+        ]
+      }
+      winner={null}
+    />
+  </div>
+  <div
+    className="game-panel"
+  >
+    <GameInfo
+      ascendingOrder={true}
+      currentMove={0}
+      history={
+        Immutable.List [
+          Immutable.Map {
+            squares: Immutable.List [
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+            ],
+          },
+        ]
+      }
+      onMoveClick={[Function]}
+      status="Next player: x"
+    />
+    <button
+      className="button qa-toggle-button"
+      onClick={[Function]}
+    >
+      Toggle order
+    </button>
+    <button
+      className="button qa-reset-button"
       onClick={[Function]}
     >
       Reset

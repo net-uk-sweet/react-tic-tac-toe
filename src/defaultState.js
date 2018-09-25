@@ -1,11 +1,10 @@
 import Immutable from 'immutable';
 
-export const defaultState = (squares) => ({
-    hasWinner: false,
+export const defaultState = (squareCount) => ({
     move: 0,
     ascendingOrder: true,
     history: Immutable.fromJS([{
-      squares: Array(squares).fill().map(() => ({
+      squares: Array(squareCount).fill().map(() => ({
         token: null,
         column: null,
         row: null

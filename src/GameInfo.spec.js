@@ -1,6 +1,6 @@
 import React from 'react';
 import Immutable  from 'immutable';
-import { mount, shallow } from 'enzyme';
+import { shallow } from 'enzyme';
 
 import GameInfo from './GameInfo';
 
@@ -9,6 +9,7 @@ let mockedClick;
 
 beforeEach(() => {
     mockedClick = jest.fn();
+    // TODO: pull from mock states
     shared = {
         startLabel: 'Go to start',
         props: {

@@ -4,7 +4,7 @@ import Immutable from 'immutable';
 import Board from './Board';
 import GameInfo from './GameInfo';
 import { calculateWinner } from './helpers';
-import { defaultState } from './emptyStates';
+import { defaultState } from './defaultState';
   
   export default class Game extends React.Component {
   
@@ -88,8 +88,8 @@ import { defaultState } from './emptyStates';
               ascendingOrder={this.state.ascendingOrder} 
               onMoveClick={(move) => { this.handleMoveClick(move) }}
             />
-            <button className="button" onClick={() => { this.handleToggleOrderClick() }}>Toggle order</button>
-            <button className="button" onClick={() => { this.handleResetClick() }}>Reset</button>
+            <button className="button qa-toggle-button" onClick={() => { this.handleToggleOrderClick() }}>Toggle order</button>
+            <button className="button qa-reset-button" onClick={() => { this.handleResetClick() }}>Reset</button>
           </div>
         </div>
       );

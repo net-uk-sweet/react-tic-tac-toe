@@ -125,13 +125,13 @@ exports[`matches snapshot 1`] = `
       status="Next player: x"
     />
     <button
-      className="button"
+      className="button qa-toggle-button"
       onClick={[Function]}
     >
       Toggle order
     </button>
     <button
-      className="button"
+      className="button qa-reset-button"
       onClick={[Function]}
     >
       Reset

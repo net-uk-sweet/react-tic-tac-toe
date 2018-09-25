@@ -10,12 +10,18 @@
 [x] - Modularise
 [x] - Reset button
 [x] - Refactor
-[ ] - class transformer
-[ ] - PropTypes
 [ ] - Add unit tests 
+    - complete game testing
+    - refactor to use test data
+    - refactor Gameinfo to use test data
+[ ] - class transformer
 [ ] - Add type script
-[ ] - Immer 
-[ ] - Prettier
+
+[ ] - Build another project (but what?)
+  - Immer
+  - Redux
+  - Thunks
+  - TypeScript
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
