@@ -29,7 +29,7 @@ exports[`matches snapshot 1`] = `
         <button
           onClick={[Function]}
         >
-          Go to move 2 - column - 2 - row - 2
+          Go to move 2 - column - 3 - row - 1
         </button>
       </li>,
       <li
@@ -38,7 +38,7 @@ exports[`matches snapshot 1`] = `
         <button
           onClick={[Function]}
         >
-          Go to move 3 - column - 3 - row - 1
+          Go to move 3 - column - 2 - row - 2
         </button>
       </li>,
       <li
@@ -47,25 +47,7 @@ exports[`matches snapshot 1`] = `
         <button
           onClick={[Function]}
         >
-          Go to move 4 - column - 3 - row - 2
-        </button>
-      </li>,
-      <li
-        className=""
-      >
-        <button
-          onClick={[Function]}
-        >
-          Go to move 5 - column - 3 - row - 3
-        </button>
-      </li>,
-      <li
-        className=""
-      >
-        <button
-          onClick={[Function]}
-        >
-          Go to move 6 - column - 2 - row - 3
+          Go to move 4 - column - 1 - row - 3
         </button>
       </li>,
     ]
@@ -84,7 +66,7 @@ exports[`when the move order is reversed matches snapshot 1`] = `
         <button
           onClick={[Function]}
         >
-          Go to move 6 - column - 2 - row - 3
+          Go to move 4 - column - 1 - row - 3
         </button>
       </li>,
       <li
@@ -93,25 +75,7 @@ exports[`when the move order is reversed matches snapshot 1`] = `
         <button
           onClick={[Function]}
         >
-          Go to move 5 - column - 3 - row - 3
-        </button>
-      </li>,
-      <li
-        className=""
-      >
-        <button
-          onClick={[Function]}
-        >
-          Go to move 4 - column - 3 - row - 2
-        </button>
-      </li>,
-      <li
-        className=""
-      >
-        <button
-          onClick={[Function]}
-        >
-          Go to move 3 - column - 3 - row - 1
+          Go to move 3 - column - 2 - row - 2
         </button>
       </li>,
       <li
@@ -120,7 +84,7 @@ exports[`when the move order is reversed matches snapshot 1`] = `
         <button
           onClick={[Function]}
         >
-          Go to move 2 - column - 2 - row - 2
+          Go to move 2 - column - 3 - row - 1
         </button>
       </li>,
       <li

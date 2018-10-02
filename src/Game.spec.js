@@ -3,12 +3,10 @@ import { shallow } from 'enzyme';
 
 import { GAME as props } from './config';
 import Game from './Game';
-import winState from './winState';
-import drawState from './drawState';
+import { winState } from './winState';
+import { drawState } from './drawState';
 
 let shared = { };
-// TODO: needed?
-let mockCalculateWin = hasWon => () => hasWon;
 
 beforeEach(() => {
   shared = {};
@@ -39,37 +37,44 @@ it('resets the game when the reset button is selected', () => {
   expect(shared.wrapper.state()).toEqual(shared.initialState);
 });
 
-// TODO: refactor
 it('updates the move and player when a previous move is selected', () => {
-  shared.wrapper.find('Board').props().onClick(4, 1, 3);
-  shared.wrapper.find('Board').props().onClick(2, 3, 5);
+  shared.wrapper.setState(winState);
   shared.wrapper.find('GameInfo').props().onMoveClick(0);
   expect(shared.wrapper.state().move).toEqual(0);
-  expect(shared.wrapper.state().player).toEqual(0);
-  shared.wrapper.find('GameInfo').props().onMoveClick(1);
-  expect(shared.wrapper.state().move).toEqual(1);
-  expect(shared.wrapper.state().player).toEqual(1);
+  expect(shared.wrapper.state().player).toEqual(shared.initialState.player);
 });
 
-// TODO: 
-it('should not update when a previously selected square is selected or the game is won', () => {
-  // shared.wrapper.
+it('should select the correct player when a move is selected', () => {
+  shared.wrapper.setState(winState);
+  shared.wrapper.find('GameInfo').props().onMoveClick(1);
+  expect(shared.wrapper.state().move).toEqual(1);
+  expect(shared.wrapper.state().player).not.toEqual(shared.initialState.player);
 });
 
 it('should correctly calculate a draw', () => {
-  shared.wrapper.state(drawState);
+  shared.wrapper.setState(drawState);
   expect(shared.wrapper.getElement()).toMatchSnapshot();
 });
 
 it('should correctly calculate a win', () => {
-  shared.wrapper.state(winState);
+  shared.wrapper.setState(winState);
   expect(shared.wrapper.getElement()).toMatchSnapshot();
 });
 
 it('should output the winning sequence', () => {
-
+  shared.wrapper.setState(winState);
+  expect(shared.wrapper.find('Board').props().winner.toJS()).toEqual([0, 4, 8]);
 });
 
-describe('when the game is won', () => {
-  
-}); 
+it('should not update when a previously selected square is selected', () => {
+  shared.wrapper.find('Board').props().onClick(4, 1, 3);
+  const interimState = shared.wrapper.state();
+  shared.wrapper.find('Board').props().onClick(4, 1, 3);
+  expect(shared.wrapper.state()).toEqual(interimState);
+});
+
+it('should not update when the game is finished and a square is selected', () => {
+  shared.wrapper.setState(winState);
+  shared.wrapper.find('Board').props().onClick(0, 1, 4);
+  expect(shared.wrapper.state()).toEqual(winState);
+});

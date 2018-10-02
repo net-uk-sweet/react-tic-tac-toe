@@ -153,49 +153,49 @@ exports[`should correctly calculate a draw 1`] = `
       squares={
         Immutable.List [
           Immutable.Map {
-            token: null,
-            column: null,
-            row: null,
+            token: "x",
+            row: 1,
+            column: 1,
           },
           Immutable.Map {
-            token: null,
-            column: null,
-            row: null,
+            token: "o",
+            row: 1,
+            column: 2,
           },
           Immutable.Map {
-            token: null,
-            column: null,
-            row: null,
+            token: "x",
+            row: 1,
+            column: 3,
           },
           Immutable.Map {
-            token: null,
-            column: null,
-            row: null,
+            token: "x",
+            row: 2,
+            column: 1,
           },
           Immutable.Map {
-            token: null,
-            column: null,
-            row: null,
+            token: "o",
+            row: 2,
+            column: 2,
           },
           Immutable.Map {
-            token: null,
-            column: null,
-            row: null,
+            token: "x",
+            row: 2,
+            column: 3,
           },
           Immutable.Map {
-            token: null,
-            column: null,
-            row: null,
+            token: "o",
+            row: 3,
+            column: 1,
           },
           Immutable.Map {
-            token: null,
-            column: null,
-            row: null,
+            token: "x",
+            row: 3,
+            column: 2,
           },
           Immutable.Map {
-            token: null,
-            column: null,
-            row: null,
+            token: "o",
+            row: 3,
+            column: 3,
           },
         ]
       }
@@ -207,7 +207,7 @@ exports[`should correctly calculate a draw 1`] = `
   >
     <GameInfo
       ascendingOrder={true}
-      currentMove={0}
+      currentMove={9}
       history={
         Immutable.List [
           Immutable.Map {
@@ -259,10 +259,460 @@ exports[`should correctly calculate a draw 1`] = `
               },
             ],
           },
+          Immutable.Map {
+            index: 0,
+            squares: Immutable.List [
+              Immutable.Map {
+                token: "x",
+                row: 1,
+                column: 1,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+            ],
+          },
+          Immutable.Map {
+            index: 1,
+            squares: Immutable.List [
+              Immutable.Map {
+                token: "x",
+                row: 1,
+                column: 1,
+              },
+              Immutable.Map {
+                token: "o",
+                row: 1,
+                column: 2,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+            ],
+          },
+          Immutable.Map {
+            index: 3,
+            squares: Immutable.List [
+              Immutable.Map {
+                token: "x",
+                row: 1,
+                column: 1,
+              },
+              Immutable.Map {
+                token: "o",
+                row: 1,
+                column: 2,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: "x",
+                row: 2,
+                column: 1,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+            ],
+          },
+          Immutable.Map {
+            index: 4,
+            squares: Immutable.List [
+              Immutable.Map {
+                token: "x",
+                row: 1,
+                column: 1,
+              },
+              Immutable.Map {
+                token: "o",
+                row: 1,
+                column: 2,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: "x",
+                row: 2,
+                column: 1,
+              },
+              Immutable.Map {
+                token: "o",
+                row: 2,
+                column: 2,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+            ],
+          },
+          Immutable.Map {
+            index: 7,
+            squares: Immutable.List [
+              Immutable.Map {
+                token: "x",
+                row: 1,
+                column: 1,
+              },
+              Immutable.Map {
+                token: "o",
+                row: 1,
+                column: 2,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: "x",
+                row: 2,
+                column: 1,
+              },
+              Immutable.Map {
+                token: "o",
+                row: 2,
+                column: 2,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: "x",
+                row: 3,
+                column: 2,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+            ],
+          },
+          Immutable.Map {
+            index: 6,
+            squares: Immutable.List [
+              Immutable.Map {
+                token: "x",
+                row: 1,
+                column: 1,
+              },
+              Immutable.Map {
+                token: "o",
+                row: 1,
+                column: 2,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: "x",
+                row: 2,
+                column: 1,
+              },
+              Immutable.Map {
+                token: "o",
+                row: 2,
+                column: 2,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: "o",
+                row: 3,
+                column: 1,
+              },
+              Immutable.Map {
+                token: "x",
+                row: 3,
+                column: 2,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+            ],
+          },
+          Immutable.Map {
+            index: 5,
+            squares: Immutable.List [
+              Immutable.Map {
+                token: "x",
+                row: 1,
+                column: 1,
+              },
+              Immutable.Map {
+                token: "o",
+                row: 1,
+                column: 2,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: "x",
+                row: 2,
+                column: 1,
+              },
+              Immutable.Map {
+                token: "o",
+                row: 2,
+                column: 2,
+              },
+              Immutable.Map {
+                token: "x",
+                row: 2,
+                column: 3,
+              },
+              Immutable.Map {
+                token: "o",
+                row: 3,
+                column: 1,
+              },
+              Immutable.Map {
+                token: "x",
+                row: 3,
+                column: 2,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+            ],
+          },
+          Immutable.Map {
+            index: 8,
+            squares: Immutable.List [
+              Immutable.Map {
+                token: "x",
+                row: 1,
+                column: 1,
+              },
+              Immutable.Map {
+                token: "o",
+                row: 1,
+                column: 2,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: "x",
+                row: 2,
+                column: 1,
+              },
+              Immutable.Map {
+                token: "o",
+                row: 2,
+                column: 2,
+              },
+              Immutable.Map {
+                token: "x",
+                row: 2,
+                column: 3,
+              },
+              Immutable.Map {
+                token: "o",
+                row: 3,
+                column: 1,
+              },
+              Immutable.Map {
+                token: "x",
+                row: 3,
+                column: 2,
+              },
+              Immutable.Map {
+                token: "o",
+                row: 3,
+                column: 3,
+              },
+            ],
+          },
+          Immutable.Map {
+            index: 2,
+            squares: Immutable.List [
+              Immutable.Map {
+                token: "x",
+                row: 1,
+                column: 1,
+              },
+              Immutable.Map {
+                token: "o",
+                row: 1,
+                column: 2,
+              },
+              Immutable.Map {
+                token: "x",
+                row: 1,
+                column: 3,
+              },
+              Immutable.Map {
+                token: "x",
+                row: 2,
+                column: 1,
+              },
+              Immutable.Map {
+                token: "o",
+                row: 2,
+                column: 2,
+              },
+              Immutable.Map {
+                token: "x",
+                row: 2,
+                column: 3,
+              },
+              Immutable.Map {
+                token: "o",
+                row: 3,
+                column: 1,
+              },
+              Immutable.Map {
+                token: "x",
+                row: 3,
+                column: 2,
+              },
+              Immutable.Map {
+                token: "o",
+                row: 3,
+                column: 3,
+              },
+            ],
+          },
         ]
       }
       onMoveClick={[Function]}
-      status="Next player: x"
+      status="Draw"
     />
     <button
       className="button qa-toggle-button"
@@ -293,9 +743,14 @@ exports[`should correctly calculate a win 1`] = `
       squares={
         Immutable.List [
           Immutable.Map {
-            token: null,
-            column: null,
-            row: null,
+            token: "x",
+            row: 1,
+            column: 1,
+          },
+          Immutable.Map {
+            token: "o",
+            row: 1,
+            column: 2,
           },
           Immutable.Map {
             token: null,
@@ -308,9 +763,9 @@ exports[`should correctly calculate a win 1`] = `
             row: null,
           },
           Immutable.Map {
-            token: null,
-            column: null,
-            row: null,
+            token: "x",
+            row: 2,
+            column: 2,
           },
           Immutable.Map {
             token: null,
@@ -318,9 +773,9 @@ exports[`should correctly calculate a win 1`] = `
             row: null,
           },
           Immutable.Map {
-            token: null,
-            column: null,
-            row: null,
+            token: "o",
+            row: 3,
+            column: 1,
           },
           Immutable.Map {
             token: null,
@@ -328,18 +783,19 @@ exports[`should correctly calculate a win 1`] = `
             row: null,
           },
           Immutable.Map {
-            token: null,
-            column: null,
-            row: null,
-          },
-          Immutable.Map {
-            token: null,
-            column: null,
-            row: null,
+            token: "x",
+            row: 3,
+            column: 3,
           },
         ]
       }
-      winner={null}
+      winner={
+        Immutable.List [
+          0,
+          4,
+          8,
+        ]
+      }
     />
   </div>
   <div
@@ -347,7 +803,7 @@ exports[`should correctly calculate a win 1`] = `
   >
     <GameInfo
       ascendingOrder={true}
-      currentMove={0}
+      currentMove={5}
       history={
         Immutable.List [
           Immutable.Map {
@@ -399,10 +855,260 @@ exports[`should correctly calculate a win 1`] = `
               },
             ],
           },
+          Immutable.Map {
+            index: 0,
+            squares: Immutable.List [
+              Immutable.Map {
+                token: "x",
+                row: 1,
+                column: 1,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+            ],
+          },
+          Immutable.Map {
+            index: 1,
+            squares: Immutable.List [
+              Immutable.Map {
+                token: "x",
+                row: 1,
+                column: 1,
+              },
+              Immutable.Map {
+                token: "o",
+                row: 1,
+                column: 2,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+            ],
+          },
+          Immutable.Map {
+            index: 4,
+            squares: Immutable.List [
+              Immutable.Map {
+                token: "x",
+                row: 1,
+                column: 1,
+              },
+              Immutable.Map {
+                token: "o",
+                row: 1,
+                column: 2,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: "x",
+                row: 2,
+                column: 2,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+            ],
+          },
+          Immutable.Map {
+            index: 6,
+            squares: Immutable.List [
+              Immutable.Map {
+                token: "x",
+                row: 1,
+                column: 1,
+              },
+              Immutable.Map {
+                token: "o",
+                row: 1,
+                column: 2,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: "x",
+                row: 2,
+                column: 2,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: "o",
+                row: 3,
+                column: 1,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+            ],
+          },
+          Immutable.Map {
+            index: 8,
+            squares: Immutable.List [
+              Immutable.Map {
+                token: "x",
+                row: 1,
+                column: 1,
+              },
+              Immutable.Map {
+                token: "o",
+                row: 1,
+                column: 2,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: "x",
+                row: 2,
+                column: 2,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: "o",
+                row: 3,
+                column: 1,
+              },
+              Immutable.Map {
+                token: null,
+                column: null,
+                row: null,
+              },
+              Immutable.Map {
+                token: "x",
+                row: 3,
+                column: 3,
+              },
+            ],
+          },
         ]
       }
       onMoveClick={[Function]}
-      status="Next player: x"
+      status="Winner: x"
     />
     <button
       className="button qa-toggle-button"
